@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Dashboard · PC-Dashboard{% endblock %}
+{% block content %}<section class="hero"><p class="eyebrow">GERÄTEÜBERSICHT</p><h1>Dein PC</h1><p class="muted">Der Client meldet unabhängig von Minecraft regelmäßig seinen Status.</p></section>
+<section class="panel"><div class="status-row"><div><p class="muted small">VERBINDUNG</p><h2 id="online-status" class="{{ 'good' if status.online else 'bad' }}">{{ 'Online' if status.online else 'Offline / keine aktuelle Meldung' }}</h2></div><span class="pulse {{ 'active' if status.online else '' }}"></span></div>
+<dl><dt>Hostname</dt><dd id="hostname">{{ status.hostname or 'Noch nicht bekannt' }}</dd><dt>Betriebssystem</dt><dd id="platform">{{ status.platform or 'Noch nicht bekannt' }}</dd><dt>Letzte Meldung</dt><dd id="last-seen">{{ status.last_seen or 'Noch keine Meldung' }}</dd></dl>
+<p class="muted small">Statusdaten sind in dieser Starterversion nur im Arbeitsspeicher gespeichert.</p></section>
+<section class="panel"><h2>Fernzugriff</h2><p>Für Bildschirmübertragung und Touch-Steuerung verwende eine etablierte Remote-Desktop-Lösung mit eigener Anmeldung und Gerätefreigabe. Dieses Dashboard führt absichtlich keine Betriebssystembefehle aus.</p></section>
+<script src="{{ url_for('static', filename='dashboard.js') }}" defer></script>{% endblock %}

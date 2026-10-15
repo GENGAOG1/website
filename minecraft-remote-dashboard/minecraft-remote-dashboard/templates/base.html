@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}PC-Dashboard{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><main class="shell"><header class="topbar"><a class="brand" href="{{ url_for('dashboard') }}">PC-Dashboard</a>
+{% if session.get('logged_in') %}<form method="post" action="{{ url_for('logout') }}"><button class="secondary" type="submit">Abmelden</button></form>{% endif %}
+</header>{% block content %}{% endblock %}<footer>Privates Projekt · Status-Dashboard, keine Remote-Befehlsausführung</footer></main></body></html>
